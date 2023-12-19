@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorCapstoneBudgetApp</title>
+    <title>Wallet</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <script>
+      window.addEventListener('unload', function() {
+        document.cookie.split(";").forEach(function(c) {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+      });
+    </script>
   </body>
 </html>
