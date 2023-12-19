@@ -1,0 +1,37 @@
+<body>
+  <div class="category-container">
+    <div class="main-category">
+      <div class="signup-top-bar">    
+        <%= link_to root_path do %>  
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+        <% end %>
+        <h2 class="top-forgot">Transactions</h2>
+      </div>
+      <div class="transaction-top-bar">Most recent
+        <span>-</span>
+      </div>
+      <div class="transaction-total">
+        <p>Total amount</p>    
+        $ <%= @category.sumamount %>
+      </div>
+      <div class='category-list'>
+        <% @acquisitions.each do |item| %>
+            <div class="transaction-item">
+              <div class="item-right">
+                <div class="category-item">
+                <h4><%= item.acquisition.name %></h4>
+                $ <%= item.acquisition.amount %>
+                </div>    
+                <span><%= item.acquisition.created_at.to_date.strftime("%d %B %Y") %></span>
+              </div>
+            </div>    
+        <% end %>
+      </div>
+      <footer class="category-footer">
+        <%= link_to 'Add New Transaction', add_new_acquisition_path(@category.id) %>
+      </footer>
+    </div>
+  </div>    
+</body>

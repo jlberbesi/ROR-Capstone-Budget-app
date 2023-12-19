@@ -1,0 +1,34 @@
+<body>
+  <div class="category-container">
+    <div class="main-category">
+      <div class="signup-top-bar">
+        <%= link_to root_path do %>  
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+        <% end %>
+        <h2 >Categories</h2>
+        <%= render "partials/signout" %>
+      </div>
+      <div class='category-list'>
+        <% @categories.each do |category| %>
+            <%= link_to acquisition_path(category.id) do %>
+              <div class="category-icon"> 
+                <img src="<%=category.icon%>" alt="Category icon" width="50" height="50"></img>
+              </div>
+              <div class="item-right">
+                <div class="category-item">
+                  <h4><%= category.name %></h4>
+                  $ <%= category.sumamount %>
+                </div>    
+                <span><%= category.updated_at.to_date.strftime("%d %B %Y") %></span>
+              </div>  
+            <% end %>        
+        <% end %>
+      </div>
+      <footer class="category-footer">
+        <%= link_to "Add a New Category", new_category_path %>
+      </footer>
+    </div>
+  </div>  
+</body>
