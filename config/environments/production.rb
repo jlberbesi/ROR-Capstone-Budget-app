@@ -3,6 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
@@ -69,7 +70,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
-  # config.active_job.queue_name_prefix = "ror_capstone_budget_app_production"
+  # config.active_job.queue_name_prefix = "wallet_production"
 
   config.action_mailer.perform_caching = false
 
