@@ -36,7 +36,7 @@ body {
 
 .splash-logo img {
   width: 100%;
-  max-width: 300px;
+  max-width: 418px;
   margin-top: 5%;
   margin-bottom: 30%;
 }
@@ -69,4 +69,12 @@ body {
   color: #6e7277;
   font-size: 20px;
   text-decoration: none;
+}
+
+.splash-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--color-text-light);
+  margin-bottom: 132px;
+  margin-top: -39px;
 }
