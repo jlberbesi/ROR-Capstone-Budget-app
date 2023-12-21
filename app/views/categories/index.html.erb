@@ -20,10 +20,13 @@
                 <div class="category-item">
                   <h4><%= category.name %></h4>
                   $ <%= category.sumamount %>
-                </div>    
+                </div>
                 <span><%= category.updated_at.to_date.strftime("%d %B %Y") %></span>
-              </div>  
-            <% end %>        
+              </div> 
+               
+            <% end %>     
+            <%= link_to 'Edit', edit_category_path(category) %>
+            <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'category-list' %>   
         <% end %>
       </div>
       <footer class="category-footer">

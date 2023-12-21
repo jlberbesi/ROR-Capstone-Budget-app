@@ -46,6 +46,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
+
+  config.include Devise::Test::ControllerHelpers, type: :controller  
   end
 
   config.before(:each) do
@@ -85,4 +87,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+  
 end

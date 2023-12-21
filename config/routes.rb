@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   }  
   
   get "up" => "rails/health#show", as: :rails_health_check
-
-  
   root "splash#index"
   resources :splash, only: [:index]
-  resources :categories, only: [:index, :new, :create]
-  resources :acquisition, only: [:show, :create]
+  resources :categories
 
-  get 'acquisition/new/:id', to: 'acquisition#new', as: 'add_new_acquisition'
-  post 'acquisition/create/:id', to: 'acquisition#create', as: 'create_new_acquisition'
+  # Rutas para 'acquisition'
+  resources :acquisition, except: [:index]
+
+  # Ruta personalizada para añadir una nueva 'acquisition'
+  get 'acquisition/new/:category_id', to: 'acquisition#new', as: 'add_new_acquisition'
+  post 'acquisition/create/:category_id', to: 'acquisition#create', as: 'create_new_acquisition'
 end

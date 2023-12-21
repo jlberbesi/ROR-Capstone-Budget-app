@@ -18,15 +18,17 @@
       </div>
       <div class='category-list'>
         <% @acquisitions.each do |item| %>
-            <div class="transaction-item">
-              <div class="item-right">
-                <div class="category-item">
+          <div class="transaction-item">
+            <div class="item-right">
+              <div class="category-item">
                 <h4><%= item.acquisition.name %></h4>
                 $ <%= item.acquisition.amount %>
-                </div>    
-                <span><%= item.acquisition.created_at.to_date.strftime("%d %B %Y") %></span>
-              </div>
-            </div>    
+                <%= link_to 'Edit', edit_acquisition_path(item.acquisition) %>
+                <%= button_to 'Delete', acquisition_path(item.acquisition), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-btn' %>
+              </div>    
+              <span><%= item.acquisition.created_at.to_date.strftime("%d %B %Y") %></span>
+            </div>
+          </div>    
         <% end %>
       </div>
       <footer class="category-footer">
