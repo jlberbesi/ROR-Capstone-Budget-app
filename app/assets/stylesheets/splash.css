@@ -72,9 +72,9 @@ body {
 }
 
 .splash-title {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--color-text-light);
-    margin-bottom: 132px;
-    margin-top: -39px;
-  }
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--color-text-light);
+  margin-bottom: 132px;
+  margin-top: -39px;
+}
