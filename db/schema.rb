@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_19_225310) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_21_182446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "acquisitions", force: :cascade do |t|
     t.string "name"
-    t.decimal "amount", precision: 10, scale: 1
+    t.decimal "amount", precision: 15, scale: 2
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_acquisitions_on_author_id"
+  end
+
+  create_table "acquisitions_categories", id: false, force: :cascade do |t|
+    t.bigint "acquisition_id", null: false
+    t.bigint "category_id", null: false
   end
 
   create_table "categories", force: :cascade do |t|

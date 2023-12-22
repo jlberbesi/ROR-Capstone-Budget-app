@@ -15,10 +15,34 @@ class CategoriesController < ApplicationController
 
     if @category_info.save
       flash[:notice] = 'The category was created successfully!'
+      redirect_to categories_path
     else
       flash[:alert] = 'The category could not be created!'
+      render :new
     end
-    redirect_to categories_path
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(new_category_params)
+      redirect_to categories_path, notice: 'Category was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+
+    CategoryAcquisition.where(category_id: @category.id).delete_all
+
+    @category.destroy
+
+    redirect_to categories_path, notice: 'Category was successfully deleted.'
   end
 
   private
