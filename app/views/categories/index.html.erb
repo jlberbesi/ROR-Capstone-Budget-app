@@ -25,8 +25,10 @@
               </div> 
                
             <% end %>     
-            <%= link_to 'Edit', edit_category_path(category) %>
-            <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'category-list' %>   
+            <div class="button-container">
+            <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-edit' %>
+            <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-delete' %>   
+          </div>  
         <% end %>
       </div>
       <footer class="category-footer">
