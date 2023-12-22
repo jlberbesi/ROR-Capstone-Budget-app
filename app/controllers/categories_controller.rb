@@ -40,13 +40,10 @@ class CategoriesController < ApplicationController
 
     CategoryAcquisition.where(category_id: @category.id).delete_all
 
-
     @category.destroy
 
     redirect_to categories_path, notice: 'Category was successfully deleted.'
   end
-
-
 
   private
 
