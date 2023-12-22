@@ -6,5 +6,5 @@ RSpec.describe Category, type: :model do
     it { should have_and_belong_to_many(:acquisitions) }
   end
 
-  # Pruebas para validaciones y métodos del modelo Category...
+ 
 end

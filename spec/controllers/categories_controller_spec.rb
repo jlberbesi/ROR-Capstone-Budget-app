@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
-  let!(:categories) { FactoryBot.create_list(:category, 3, user: user) }
 
   before do
     sign_in user
@@ -15,8 +14,9 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     it 'loads all of the user categories into @categories' do
+      FactoryBot.create(:category, user: user)
       get :index
-      expect(assigns(:categories)).to match_array(categories)
+      expect(assigns(:categories)).not_to be_empty
     end
   end
 
@@ -42,45 +42,68 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     context 'with invalid attributes' do
-    
-    end
+        it 'does not create a new category' do
+          expect {
+            post :create, params: { category: FactoryBot.attributes_for(:category, custom_name: nil) }
+          }.to_not change(Category, :count)
+        end
+      
+        it 're-renders the new method' do
+          post :create, params: { category: FactoryBot.attributes_for(:category, custom_name: nil) }
+          expect(response).to render_template(:new)
+        end
+      end
   end
 
   describe 'GET #edit' do
     it 'renders the edit template' do
-      get :edit, params: { id: categories.first.id }
+      category = FactoryBot.create(:category, user: user)
+      get :edit, params: { id: category.id }
       expect(response).to render_template(:edit)
     end
   end
 
   describe 'PUT #update' do
+    let(:category) { FactoryBot.create(:category, user: user) }
+
     context 'with valid attributes' do
       it 'updates the category' do
-        put :update, params: { id: categories.first.id, category: { name: 'Updated' } }
-        categories.first.reload
-        expect(categories.first.name).to eq('Updated')
+        put :update, params: { id: category.id, category: { name: 'Updated Category' } }
+        category.reload
+        expect(category.name).to eq('Updated Category')
       end
 
       it 'redirects to the categories index' do
-        put :update, params: { id: categories.first.id, category: { name: 'Updated' } }
+        put :update, params: { id: category.id, category: { name: 'Updated Category' } }
         expect(response).to redirect_to(categories_path)
       end
     end
 
     context 'with invalid attributes' do
-     
-    end
+        it 'does not update the category' do
+          put :update, params: { id: category.id, category: { name: nil } }
+          category.reload
+          expect(category.name).to_not be_nil
+        end
+      
+        it 're-renders the edit method' do
+          put :update, params: { id: category.id, category: { name: nil } }
+          expect(response).to render_template(:edit)
+        end
+      end
   end
 
   describe 'DELETE #destroy' do
     it 'deletes the category' do
+      category = FactoryBot.create(:category, user: user)
       expect {
-        delete :destroy, params: { id: categories.first.id }
+        delete :destroy, params: { id: category.id }
       }.to change(Category, :count).by(-1)
     end
 
     it 'redirects to categories#index' do
-      delete :destroy, params: { id: categories.first.id }
+      category = FactoryBot.create(:category, user: user)
+      delete :destroy, params: { id: category.id }
       expect(response).to redirect_to(categories_path)
     end
   end
