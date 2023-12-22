@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 10px;
 }
 
-/* Estilo para el botón "Delete" */
+
 .delete-btn {
   background-color: #ff4d4d;
   color: #fff;
@@ -70,8 +70,8 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-/* Cambio de color al pasar el mouse sobre los botones */
+
 .edit-btn:hover,
 .delete-btn:hover {
-  background-color: #0056b3; /* Cambia el color al pasar el mouse */
+  background-color: #0056b3; 
 }
