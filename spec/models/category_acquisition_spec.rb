@@ -5,6 +5,4 @@ RSpec.describe CategoryAcquisition, type: :model do
     it { should belong_to(:category) }
     it { should belong_to(:acquisition) }
   end
-
-  
 end

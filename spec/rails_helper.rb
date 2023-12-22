@@ -48,8 +48,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
 
-  config.include Devise::Test::ControllerHelpers, type: :controller  
-  
+    config.include Devise::Test::ControllerHelpers, type: :controller
   end
 
   config.before(:each) do
@@ -90,11 +89,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  Shoulda::Matchers.configure do |shoulda_matchers_config|
+    shoulda_matchers_config.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end
   end
-  
 end
