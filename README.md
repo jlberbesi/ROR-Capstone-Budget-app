@@ -63,7 +63,7 @@
 
 - [Live Demo Link](https://mybudgetappbyjose.onrender.com/)
 - [Project presentation Part: video 1]( https://www.loom.com/share/78b89e62fc4349bdb98de4fd4518c1e1)
-- [Project presentation Part: video-2] (https://www.loom.com/share/aafc05202a2240a899f04d77dad9905c)
+- [Project presentation Part: video 2]( https://www.loom.com/share/aafc05202a2240a899f04d77dad9905c)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
