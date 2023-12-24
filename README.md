@@ -62,7 +62,8 @@
  The link to the project deployed and the presentation video:
 
 - [Live Demo Link](https://mybudgetappbyjose.onrender.com/)
-- [Project presentation video]( https://www.loom.com/share/78b89e62fc4349bdb98de4fd4518c1e1)
+- [Project presentation Part: video 1]( https://www.loom.com/share/78b89e62fc4349bdb98de4fd4518c1e1)
+- [Project presentation Part: video-2] (https://www.loom.com/share/aafc05202a2240a899f04d77dad9905c)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
